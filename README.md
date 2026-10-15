@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cafe Management
 
-## Getting Started
+Noiric cafe ordering and operations app. Customers browse the menu and order from a table QR; staff manage the kitchen, tables, menu, loyalty and music from one workspace.
 
-First, run the development server:
+## Run locally
 
-```bash
+~~~bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+~~~
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Staff sign in at /admin; set KITCHEN_PASSWORD and SESSION_SECRET in your ignored .env.local.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Workspaces
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- / — Noiric visitor site
+- /order — customer menu, QR scan, cart, email OTP sign-in, order status, rewards and music voting
+- /admin — overview, live kitchen, menu editor, table QR printing, customer access, music queue and settings
+- /kitchen — opens the kitchen view in the admin workspace
 
-## Learn More
+In Admin → Tables & QR, the base URL defaults to the current site origin. On Vercel that means the deployed domain is used automatically. Change the base URL once to apply it to every printed seat QR from that admin browser.
 
-To learn more about Next.js, take a look at the following resources:
+## Supabase
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Set these server environment variables locally and in Vercel:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- SUPABASE_URL
+- SUPABASE_ANON_KEY
+- SUPABASE_SERVICE_ROLE_KEY
+- KITCHEN_PASSWORD
+- SESSION_SECRET
+- RESEND_API_KEY
+- Optional: RESEND_FROM (defaults to NOIRIC <onboarding@resend.dev>)
 
-## Deploy on Vercel
+The Supabase migrations live in supabase/migrations. Apply both migrations to the target project before running the app. Keep service-role, Resend, staff-password and session secrets out of Git and browser code. The supplied local .env.local is ignored.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Email OTP uses Supabase Auth to create and verify the one-time code, with Resend's HTTP API delivering it. No SMTP setup is needed. The current test sender is for development; verify a cafe-owned sending domain in Resend and set RESEND_FROM before customer rollout. Phone OTP is postponed until an SMS provider is configured.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy to Vercel
+
+Import this repository in Vercel, add the environment variables above, then deploy the main branch. The Supabase project must already have both migrations applied. The QR base URL will follow the deployed domain when you generate/print cards there.
+
+Payments, online gateway, costs-based profit reporting, and automatic music playback are not connected yet.

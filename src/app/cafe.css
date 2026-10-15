@@ -1,0 +1,599 @@
+.cafe {
+  --ink: #26251f;
+  --paper: #f7f5ef;
+  --accent: #b3442d;
+  color: var(--ink);
+  background: var(--paper);
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+}
+.cafe * {
+  box-sizing: border-box;
+}
+.cafe button,
+.cafe input,
+.cafe select,
+.cafe textarea {
+  font: inherit;
+}
+.cafe button,
+.cafe a {
+  touch-action: manipulation;
+}
+.cafe button {
+  cursor: pointer;
+  min-height: 44px;
+  border: 1px solid #dedbd1;
+  border-radius: 9px;
+  background: transparent;
+  padding: 10px 15px;
+  transition:
+    background 0.15s,
+    transform 0.15s;
+}
+.cafe button:hover {
+  background: #eae6dc;
+}
+.cafe button:active {
+  transform: scale(0.97);
+}
+.cafe button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.cafe .primary,
+.cafe button.selected {
+  background: var(--ink);
+  color: white;
+  border-color: var(--ink);
+}
+.cafe .accent {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+.cafe input,
+.cafe select,
+.cafe textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d9d6cb;
+  background: #fff;
+  border-radius: 8px;
+  min-height: 44px;
+  color: var(--ink);
+}
+.cafe input[type="checkbox"] {
+  width: 18px;
+  min-height: 18px;
+  accent-color: var(--accent);
+}
+.cafe label {
+  display: grid;
+  gap: 7px;
+  font-size: 13px;
+}
+.cafe :focus-visible {
+  outline: 3px solid #b3442d;
+  outline-offset: 3px;
+}
+.cafe h1,
+.cafe h2,
+.cafe h3,
+.cafe p {
+  margin: 0;
+}
+.cafe h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -1.6px;
+}
+.cafe h2 {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+}
+.cafe h3 {
+  font-size: 17px;
+}
+.cafe small,
+.muted {
+  color: #757365;
+}
+.cafe .eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.cafe .row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cafe .spread {
+  justify-content: space-between;
+}
+.cafe .stack {
+  display: grid;
+  gap: 18px;
+}
+.cafe .grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.cafe .panel {
+  background: white;
+  border: 1px solid #e1ded5;
+  border-radius: 14px;
+  padding: 22px;
+}
+.cafe .pill {
+  font-size: 12px;
+  border: 1px solid #dedbd1;
+  padding: 6px 10px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+.cafe .notice {
+  padding: 14px 18px;
+  border: 1px solid #dfc6b9;
+  background: #fff1e8;
+  border-radius: 10px;
+  line-height: 1.5;
+}
+.cafe .error {
+  color: #a32c22;
+}
+.cafe .topbar {
+  padding: 20px 0;
+  border-bottom: 1px solid #dedbd1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.cafe .wordmark {
+  font-size: 23px;
+  letter-spacing: 5px;
+  font-weight: 800;
+  text-decoration: none;
+  color: inherit;
+}
+.cafe .customer-wrap {
+  max-width: 1160px;
+  margin: auto;
+  padding: 0 32px 140px;
+}
+.cafe .intro {
+  padding: 42px 0 30px;
+}
+.cafe .intro p {
+  margin-top: 14px;
+  line-height: 1.6;
+  color: #757365;
+}
+.cafe .toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--paper);
+  padding: 12px 0 18px;
+  display: grid;
+  gap: 12px;
+}
+.cafe .categories {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cafe .categories button {
+  white-space: nowrap;
+  border-radius: 30px;
+}
+.cafe .dish-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 30px;
+}
+.cafe .dish {
+  padding: 24px 0;
+  border-bottom: 1px solid #dedbd1;
+  display: grid;
+  grid-template-columns: 1fr 126px;
+  gap: 16px;
+  align-items: start;
+}
+.cafe .dish p {
+  font-size: 13px;
+  color: #757365;
+  line-height: 1.6;
+  margin: 8px 0 16px;
+}
+.cafe .dish-photo {
+  height: 126px;
+  width: 126px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #eee9df;
+}
+.cafe .dish-visual {
+  display: grid;
+  gap: 8px;
+}
+.cafe .quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #dedbd1;
+  border-radius: 9px;
+}
+.cafe .quantity button {
+  border: 0;
+  padding: 5px 12px;
+  min-width: 38px;
+}
+.cafe .bottomnav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  background: #fffdf8ef;
+  backdrop-filter: blur(16px);
+  border-top: 1px solid #dedbd1;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 9px 12px max(9px, env(safe-area-inset-bottom));
+}
+.cafe .bottomnav button {
+  border: 0;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  font-size: 11px;
+  min-width: 65px;
+}
+.cafe .cartbar {
+  position: fixed;
+  bottom: 88px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(520px, calc(100% - 32px));
+  z-index: 14;
+  box-shadow: 0 8px 25px #26251f20;
+}
+.cafe .scrim {
+  position: fixed;
+  inset: 0;
+  background: #16150f80;
+  backdrop-filter: blur(4px);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.cafe .modal {
+  background: var(--paper);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90dvh;
+  overflow: auto;
+  padding: 26px;
+  box-shadow: 0 30px 100px #0003;
+}
+.cafe .modal.wide {
+  max-width: 800px;
+}
+.cafe .modal header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 15px;
+}
+.cafe .line {
+  padding: 15px 0;
+  border-bottom: 1px solid #e5e1d7;
+}
+.cafe .stamps {
+  display: flex;
+  gap: 10px;
+  margin: 25px 0;
+}
+.cafe .stamp {
+  width: 48px;
+  height: 48px;
+  border: 1px dashed #b6b09f;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.cafe .stamp.filled {
+  background: var(--accent);
+  color: white;
+  border: 0;
+}
+.cafe .admin-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+.cafe .sidebar {
+  background: #25261f;
+  color: #ede9dd;
+  padding: 30px 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.cafe .sidebar nav {
+  display: grid;
+  gap: 6px;
+}
+.cafe .sidebar button {
+  color: #d3d1c6;
+  border: 0;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px;
+}
+.cafe .sidebar button.selected {
+  background: #444638;
+  color: #fff;
+}
+.cafe .sidebar button:hover {
+  background: #37392f;
+}
+.cafe .admin-main {
+  padding: 38px;
+  min-width: 0;
+}
+.cafe .admin-header {
+  margin-bottom: 30px;
+}
+.cafe .stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.cafe .stat strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 36px;
+  margin-top: 12px;
+}
+.cafe .tickets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.cafe .ticket {
+  border-top: 4px solid var(--accent);
+}
+.cafe .ticket ul {
+  padding-left: 20px;
+  line-height: 1.9;
+}
+.cafe .table-wrap {
+  overflow: auto;
+}
+.cafe table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+.cafe th,
+.cafe td {
+  padding: 15px 10px;
+  border-bottom: 1px solid #e5e1d7;
+  white-space: nowrap;
+}
+.cafe th {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #757365;
+}
+.cafe .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.cafe .form-grid .full {
+  grid-column: 1/-1;
+}
+.cafe .check {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.cafe .qr-card {
+  text-align: center;
+}
+.cafe .qr-card img {
+  width: 190px;
+  height: 190px;
+  margin: 12px auto;
+  display: block;
+}
+.cafe .qr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 18px;
+}
+.cafe .empty {
+  padding: 60px 20px;
+  text-align: center;
+  display: grid;
+  gap: 15px;
+  justify-items: center;
+}
+.cafe .login {
+  max-width: 430px;
+  margin: 0 auto;
+  padding-top: 15vh;
+}
+.cafe .login form {
+  margin-top: 25px;
+}
+.cafe .music-art {
+  width: 50px;
+  height: 50px;
+  background: #e4ded0;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.cafe .danger {
+  color: #a32c22;
+}
+.cafe .section-title {
+  margin: 30px 0 16px;
+}
+.cafe .print-only {
+  display: none;
+}
+@media (max-width: 900px) {
+  .cafe .admin-shell {
+    grid-template-columns: 190px 1fr;
+  }
+  .cafe .admin-main {
+    padding: 24px;
+  }
+  .cafe .sidebar {
+    padding: 25px 12px;
+  }
+  .cafe .stats {
+    grid-template-columns: 1fr;
+  }
+  .cafe .grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 650px) {
+  .cafe .customer-wrap {
+    padding: 0 18px 150px;
+  }
+  .cafe .topbar {
+    padding: 16px 0;
+  }
+  .cafe .wordmark {
+    font-size: 19px;
+    letter-spacing: 3px;
+  }
+  .cafe .intro {
+    padding: 30px 0 18px;
+  }
+  .cafe .dish-grid {
+    grid-template-columns: 1fr;
+  }
+  .cafe .dish {
+    grid-template-columns: 1fr 112px;
+    padding: 20px 0;
+  }
+  .cafe .dish-photo {
+    width: 112px;
+    height: 112px;
+  }
+  .cafe .bottomnav {
+    gap: 8px;
+    justify-content: space-around;
+  }
+  .cafe .scrim {
+    padding: 10px;
+    align-items: flex-end;
+  }
+  .cafe .modal {
+    padding: 22px;
+    max-height: 92dvh;
+  }
+  .cafe .admin-shell {
+    display: block;
+  }
+  .cafe .sidebar {
+    height: auto;
+    position: relative;
+    padding: 18px;
+    gap: 14px;
+  }
+  .cafe .sidebar nav {
+    display: flex;
+    overflow: auto;
+  }
+  .cafe .sidebar nav button {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .cafe .sidebar .sidebar-foot {
+    display: none;
+  }
+  .cafe .admin-main {
+    padding: 22px 16px;
+  }
+  .cafe .admin-header {
+    align-items: flex-start;
+  }
+  .cafe .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .cafe .stats {
+    grid-template-columns: 1fr;
+  }
+  .cafe .row.wrap {
+    flex-wrap: wrap;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cafe * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  .cafe .print-area,
+  .cafe .print-area * {
+    visibility: visible !important;
+  }
+  .cafe .print-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cafe .print-area button,
+  .cafe .print-area .no-print {
+    display: none !important;
+  }
+  .cafe .qr-card {
+    break-inside: avoid;
+    border: 1px dashed #999;
+    margin: 10px;
+  }
+  .cafe .print-only {
+    display: block;
+  }
+}

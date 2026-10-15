@@ -240,6 +240,7 @@ export default function Home() {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-4">
+            <a href="/order" className={`text-xs font-semibold ${isScrolledPastHero ? 'text-coffee-900' : 'text-white'}`}>Order food</a>
             {/* Instagram Link */}
             <a
               href="https://instagram.com/noiric.cafe"
